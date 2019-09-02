@@ -1,24 +1,20 @@
 pipeline {
     agent any
     stages {
+        stage('Build') {
+            steps {
+                echo 'Building'
+            }
+        }
         stage('Test') {
             steps {
-                sh 'gradlew check'
+                echo 'Testing'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying'
             }
         }
     }
-    post {
-        always {
-            junit 'build/reports/**/*.xml'
-        }
-
-    failure {
-        mail to: '1142040298@qq.com',
-             subject: "Failed Pipeline",
-             body: "Something is wrong with"
-    }
-        }
-    
-
-		
 }
