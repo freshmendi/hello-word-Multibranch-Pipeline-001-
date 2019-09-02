@@ -11,12 +11,13 @@ pipeline {
         always {
             junit 'build/reports/**/*.xml'
         }
-    }
-	failure {
+			failure {
         mail to: '1142040298@qq.com',
              subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
              body: "Something is wrong with ${env.BUILD_URL}"
     
         }
+    }
+
 		
 }
